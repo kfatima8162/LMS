@@ -1,11 +1,79 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
     
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="{% static 'dashboard.css' %}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Teacher Panel</h2>
+        <ul>
+            <li>Dashboard</li>
+            <li>Courses</li>
+            <li>Assignments</li>
+            <li>Attendance</li>
+            <li>Students</li>
+        </ul>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+
+        <!-- Cards -->
+        <div class="cards">
+            <div class="card">
+                <h2>{{ total_students }}</h2>
+                <p>Total Students</p>
+            </div>
+
+            <div class="card">
+                <h2>{{ total_courses }}</h2>
+                <p>Total Courses</p>
+            </div>
+
+            <div class="card">
+                <h2>{{ total_assignments }}</h2>
+                <p>Assignments</p>
+            </div>
+
+            <div class="card">
+                <h2>{{ pending_evaluation }}</h2>
+                <p>Pending Evaluation</p>
+            </div>
+        </div>
+
+        <!-- Courses -->
+        <div class="section">
+            <h3>Your Courses</h3>
+            <ul>
+                {% for course in courses %}
+                    <li>{{ course.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Assignments -->
+        <div class="section">
+            <h3>Recent Assignments</h3>
+            <ul>
+                {% for a in assignments %}
+                    <li>{{ a.title }} - {{ a.deadline }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
 </body>
 </html>
