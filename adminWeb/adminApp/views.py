@@ -1,3 +1,6 @@
 from django.shortcuts import render
-
-# Create your views here.
+ 
+# Admin Dashboard view
+def dashboard(request):
+    return render(request, 'A_dashboard.html')
+ 
