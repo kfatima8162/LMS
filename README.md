@@ -67,7 +67,6 @@ TeacherApp/
 ├── decorators.py         # Role-based access decorators
 ├── models.py             # Teacher, Student models
 ├── templates/
-│   └── teacher/
 │       ├── login.html
 │       └── dashboard.html
 ```
