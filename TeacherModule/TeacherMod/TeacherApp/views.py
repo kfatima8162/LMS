@@ -1,8 +1,34 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, HttpResponse
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from .models import *
+from .decorators import teacher_required
 
+def login_view(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(request, username = username, password = password)
+        if user is not None:
+            login(request, user)
+            
+            if hasattr(user, 'teacher'):
+                return redirect('teacher_dashboard')
+            
+            elif hasattr(user, 'student'):
+                # return redirect('student_dashboard')
+                return HttpResponse("Student module under development 🚧")
+            
+            else:
+                return redirect('login')
+                
+    return render(request, 'login.html')
+
+@login_required
+@teacher_required
 def teacher_dashboard(request):
-    teacher = Teacher.objects.first()
+    teacher = Teacher.objects.get(user=request.user)
 
     courses = Course.objects.filter(teacher=teacher)
     total_courses = courses.count()

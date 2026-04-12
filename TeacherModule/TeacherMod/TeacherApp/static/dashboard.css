@@ -1,12 +1,33 @@
+:root {
+    --primary: #1a3a6b;
+    --secondary: #2b5db3;
+    --accent: #f5a623;
+    --bg: #f4f7fc;
+}
+
 body {
-    font-family: Arial;
-    margin: 0;
-    background: #f4f6f9;
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg);
+}
+
+/* HEADER */
+.header {
+    flex-basis: auto;
+    display: flex top;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    color: white;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 .container {
-    display: flex;
+
+    justify-content: center;
+    align-items: center;
 }
+
 
 .sidebar {
     width: 220px;
@@ -26,8 +47,10 @@ body {
 }
 
 .main {
-    flex: 1;
+    flex: 1 1;
     padding: 20px;
+    align-items: center;
+    justify-content: top;
 }
 
 .cards {
@@ -40,7 +63,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     width: 200px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .section {
@@ -48,4 +71,4 @@ body {
     background: white;
     padding: 20px;
     border-radius: 10px;
-}   
+}
